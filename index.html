@@ -46,39 +46,44 @@
 //2. Add a dining table to the living room
 
         house.areas[0].livingRoom.items.push('dinning table');
-        console.log("Added a dining table to the living room: " + house.areas[0].livingRoom.items);
+        console.log("Living room items: " + house.areas[0].livingRoom.items);
 
 //3. Add a stove to the kitchen
 
         house.areas[0].kitchen.items.push('Stove');
-        console.log("Added a stove to the kitchen: " + house.areas[0].kitchen.items);
+        console.log("Kitchen items: " + house.areas[0].kitchen.items);
 
 //4. Remove the washing machine from bedroomOne
 
         house.areas[0].bedroomOne.items.pop('washing machine');
-        console.log("Removed the washing machine from bedroomOne: " + house.areas[0].bedroomOne.items);
+        console.log("BedroomOne items: " + house.areas[0].bedroomOne.items);
 
 //5. Find the total number of beds in all rooms
         let count = 0;
         let areasObj = house.areas[0];
         let areaNames = Object.values(areasObj);
+        let allTheBedsInArea = 0;
 
+        areaNames.forEach( (area) => {
+                 //finds all the beds in area
+                allTheBedsInArea = area.items.filter(item => item === 'bed').length;
+                //Increment counter with allTheBedsInArea
+                 count += allTheBedsInArea;
 
-        areaNames.forEach( areas => {
-               count += areas.items.filter( 
+              /*  count += areas.items.filter( 
                        function (item){
                                 if(item== 'bed'){
                                          return item;
                                  }
-                        }).length;
-                
+                        }).length; */ 
+
         });
         console.log("Total number of beds in all room: " + count);
 
 //6. Change the color of the car to blue
 
         house.garage.car.color='blue';
-        console.log("Changed the color of the car to blue: " + house.garage.car.color);
+        console.log("Color of the car: " + house.garage.car.color);
 
 //7. Add a another car to the garage with a honk function
 
@@ -87,18 +92,17 @@
 
 //8. Make the new car honk
 
-        let honk = house.garage.car2.honk();
-        console.log(honk);
+        house.garage.car2.honk();
 
 //9. Change the 'broken chair' in the kitchen to 'new chair'
 
         house.areas[0].kitchen.items[1]='new chair';
-        console.log("Changed the 'broken chair' in the kitchen to 'new chair': " + house.areas[0].kitchen.items);
+        console.log("Kitchen items: " + house.areas[0].kitchen.items);
 
 //10. If the house has a garden, console.log the name of the flower
 
         if(house.hasOwnProperty('garden')){
-             console.log(house.garden[1]);
+             console.log("Name of the flower: " + house.garden[1]);
         }else{
             console.log('No garden');
         }
